@@ -1,0 +1,48 @@
+{% extends 'jobhunter/base.html' %}
+{% block content %}
+
+<h2>Your Applications ({{ apps.count }})</h2>
+
+{% for app in apps %}
+  <div class="card" style="border-left:5px solid #27ae60;">
+    <strong>#{{ app.tracking_id }}</strong><br>
+    {{ app.job.title }} at {{ app.job.company }}<br>
+    Resume: {{ app.resume.name }}<br>
+    Status: <strong>{{ app.status|upper }}</strong><br>
+    {% if app.sent_at %}
+      Sent on {{ app.sent_at|date:"M d, Y" }}
+    {% endif %}
+    <br>
+    <a href="{% url 'send_email' app.tracking_id %}" class="btn">Continue</a>
+  </div>
+{% empty %}
+  <p>No applications yet — let’s change that.</p>
+{% endfor %}
+
+<hr style="margin:50px 0;">
+
+<h2>Jobs Found ({{ jobs.count }})</h2>
+
+{% if jobs %}
+  {% for job in jobs %}
+    <div class="card" style="border-left:5px solid #3498db;">
+      <strong>{{ job.title }}</strong><br>
+      {{ job.company }} — <em>{{ job.source }}</em><br><br>
+
+      <a href="{{ job.link }}" target="_blank">Open Job</a> |
+      <a href="{% url 'pick_resume' job.id %}" class="btn">Apply Now</a>
+    </div>
+  {% endfor %}
+{% else %}
+  <p>No jobs found yet. Try searching above.</p>
+{% endif %}
+
+<div style="text-align:center; margin:50px 0;">
+  <a href="{% url 'apply_all' %}"
+     class="btn"
+     style="background:#c0392b; font-size:26px; padding:20px;">
+    APPLY TO ALL {{ jobs.count }} JOBS
+  </a>
+</div>
+
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'jobhunter/base.html' %}
+{% block content %}
+<h2>Generate Tailored Resume Code</h2>
+
+<!-- PROMPT FORM -->
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit" class="btn" style="font-size:18px; padding:15px;">
+    Generate LaTeX Code with AI
+  </button>
+</form>
+
+<!-- SHOW LATEX CODE + CONFIRM BUTTON -->
+{% if app.altered_code %}
+  <h3 style="margin-top:40px; color:#27ae60;">Your AI-Generated LaTeX Code</h3>
+  <pre style="background:#1e1e1e; color:#f8f8f2; padding:20px; border-radius:10px; max-height:600px; overflow:auto; font-size:14px;">
+{{ app.altered_code }}
+  </pre>
+
+  <div style="margin-top:30px; text-align:center;">
+    <h3>Do you like this code?</h3>
+    <a href="{% url 'upload_final_resume' app.tracking_id %}" 
+       class="btn" style="background:#27ae60; font-size:22px; padding:18px; margin:10px;">
+      YES — USE THIS CODE & UPLOAD PDF
+    </a>
+    <br><br>
+    <a href="{% url 'generate_code' app.tracking_id %}" class="btn" style="background:#e67e22;">
+      NO — REGENERATE AGAIN
+    </a>
+  </div>
+{% endif %}
+
+<a href="{% url 'dashboard' %}" class="btn" style="margin-top:30px;">← Back to Dashboard</a>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "jobhunter/base.html" %}
+
+{% block content %}
+<h2>📎 Upload Final Resume PDF</h2>
+<p>After compiling your new LaTeX code (Overleaf, etc.), upload the PDF here.</p>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="final_resume" accept=".pdf" required>
+    <br><br>
+    <button type="submit" class="btn">Upload PDF & Continue →</button>
+</form>
+{% endblock %}

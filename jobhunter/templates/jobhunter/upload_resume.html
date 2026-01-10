@@ -1,0 +1,30 @@
+{% extends 'jobhunter/base.html' %}
+
+{% block content %}
+<h2>📄 Upload New Resume Upload</h2>
+
+<!-- PAST RESUMES LIST -->
+<h3>Your Existing Resumes ({{ resumes.count }})</h3>
+{% for resume in resumes %}
+<div class="card" style="background:#f0f8ff; margin-bottom:15px;">
+  <strong>{{ resume.name }}</strong><br>
+  Description: {{ resume.description }}<br>
+  Uploaded: {{ resume.uploaded_at|date:"M d, Y H:i" }}<br>
+  Keywords: {{ resume.keywords|default:"None" }}
+</div>
+{% empty %}
+<p>No resumes uploaded yet — this will be your first one!</p>
+{% endfor %}
+
+<hr style="margin:40px 0;">
+
+<!-- UPLOAD NEW ONE -->
+<h3 style="margin-top:30px;">Upload a New Resume</h3>
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit" class="btn" style="background:#27ae60; font-size:18px;">Upload New Resume</button>
+</form>
+
+<a href="{% url 'dashboard' %}" class="btn" style="margin-top:20px;">← Back to Dashboard</a>
+{% endblock %}

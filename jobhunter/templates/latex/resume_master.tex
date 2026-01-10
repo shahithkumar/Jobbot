@@ -1,0 +1,131 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{tabularx}
+\usepackage{fontawesome5}
+\usepackage{geometry}
+
+% Geometry
+\geometry{left=1.5cm, right=1.5cm, top=1.5cm, bottom=1.5cm}
+
+% Font: Helvetica (Sans Serif) - Cleaner look
+\usepackage[scaled]{helvet}
+\renewcommand\familydefault{\sfdefault} 
+\usepackage[T1]{fontenc}
+
+% Custom Colors
+\usepackage{xcolor}
+\definecolor{primary}{RGB}{0, 77, 153} % Dark Blue
+
+% Formatting
+\titleformat{\section}{\Large\bfseries\color{primary}\uppercase}{}{0em}{}[\titlerule]
+\titlespacing*{\section}{0pt}{12pt}{8pt}
+
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-1pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+    {\Huge \textbf{\VAR{ name }}} \\ \vspace{4pt}
+    \small 
+    \faEnvelope \ \href{mailto:\VAR{ email }}{\VAR{ email }} $|$ 
+    \faPhone \ \VAR{ phone } 
+    \BLOCK{ if links }
+        $|$ \faLink \ \VAR{ links }
+    \BLOCK{ endif }
+\end{center}
+
+%-----------SUMMARY-----------
+\BLOCK{ if summary }
+\section{Professional Summary}
+\VAR{ summary }
+\BLOCK{ endif }
+
+%-----------EXPERIENCE-----------
+\BLOCK{ if experience }
+\section{Experience}
+\begin{itemize}[leftmargin=0.15in, label={}]
+    \BLOCK{ for exp in experience }
+    \resumeSubheading
+      {\VAR{ exp.company }}{\VAR{ exp.dates }}
+      {\VAR{ exp.role }}{}
+      \BLOCK{ if exp.bullets }
+      \begin{itemize}
+        \BLOCK{ for bullet in exp.bullets }
+        \resumeItem{\VAR{ bullet }}
+        \BLOCK{ endfor }
+      \end{itemize}
+      \BLOCK{ endif }
+    \BLOCK{ endfor }
+\end{itemize}
+\BLOCK{ endif }
+
+%-----------EDUCATION-----------
+\BLOCK{ if education }
+\section{Education}
+\begin{itemize}[leftmargin=0.15in, label={}]
+    \BLOCK{ for edu in education }
+    \resumeSubheading
+      {\VAR{ edu.school }}{\VAR{ edu.dates }}
+      {\VAR{ edu.degree }}{}
+    \BLOCK{ endfor }
+\end{itemize}
+\BLOCK{ endif }
+
+%-----------PROJECTS-----------
+\BLOCK{ if projects }
+\section{Projects}
+\begin{itemize}[leftmargin=0.15in, label={}]
+    \BLOCK{ for proj in projects }
+    \resumeSubheading
+      {\VAR{ proj.name }}{}
+      {\VAR{ proj.tech }}{}
+      \BLOCK{ if proj.bullets }
+      \begin{itemize}
+        \BLOCK{ for bullet in proj.bullets }
+        \resumeItem{\VAR{ bullet }}
+        \BLOCK{ endfor }
+      \end{itemize}
+      \BLOCK{ endif }
+    \BLOCK{ endfor }
+\end{itemize}
+\BLOCK{ endif }
+
+%-----------SKILLS-----------
+\BLOCK{ if skills }
+\section{Technical Skills}
+\begin{itemize}[leftmargin=0.15in, label={}]
+    \item \small{
+     \textbf{Languages \& Tools:}\ \VAR{ skills }
+    }
+\end{itemize}
+\BLOCK{ endif }
+
+%-----------CERTIFICATIONS-----------
+\BLOCK{ if certifications }
+\section{Certifications}
+\begin{itemize}[leftmargin=0.15in, label={}]
+    \BLOCK{ for cert in certifications }
+    \item \small{\VAR{ cert }}
+    \BLOCK{ endfor }
+\end{itemize}
+\BLOCK{ endif }
+
+\end{document}

@@ -1,0 +1,123 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\usepackage{tabularx}
+\usepackage{fontawesome5}
+\usepackage{geometry}
+
+% Geometry
+\geometry{left=1.5cm, right=1.5cm, top=1.5cm, bottom=1.5cm}
+
+% Font: Helvetica (Sans Serif) - Cleaner look
+\usepackage[scaled]{helvet}
+\renewcommand\familydefault{\sfdefault} 
+\usepackage[T1]{fontenc}
+
+% Custom Colors
+\usepackage{xcolor}
+\definecolor{primary}{RGB}{0, 77, 153} % Dark Blue
+
+% Formatting
+\titleformat{\section}{\Large\bfseries\color{primary}\uppercase}{}{0em}{}[\titlerule]
+\titlespacing*{\section}{0pt}{12pt}{8pt}
+
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-1pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+    {\Huge \textbf{V. SHAHITH KUMAR}} \\ \vspace{4pt}
+    \small 
+    \faEnvelope \ \href{mailto:shahithu2004@gmail.com}{shahithu2004@gmail.com} $|$ 
+    \faPhone \ +916301103526 
+            $|$ \faLink \ LinkedIn | GitHub
+    \end{center}
+
+%-----------SUMMARY-----------
+\section{Professional Summary}
+Results-driven Python developer with 4+ years of experience in financial services, leveraging expertise in Python, SQL, and data pipelines to drive high-impact trading strategies and data-driven decision-making.
+
+%-----------EXPERIENCE-----------
+\section{Experience}
+\begin{itemize}[leftmargin=0.15in, label={}]
+        \resumeSubheading
+      {Extion Infotech}{None}
+      {Data Science Intern}{}
+            \begin{itemize}
+                \resumeItem{Analyzed datasets using Python and SQL to deliver useful insights.}
+                \resumeItem{Developed machine learning models and deep learning solutions.}
+                \resumeItem{Automated data preprocessing and feature engineering workflows.}
+                \resumeItem{Collaborated with teams to understand business needs and build solutions.}
+                \resumeItem{Created Power BI dashboards to visualize findings clearly.}
+                \resumeItem{Managed GitHub-based workflows to maintain clean and organized projects.}
+              \end{itemize}
+          \end{itemize}
+
+%-----------EDUCATION-----------
+\section{Education}
+\begin{itemize}[leftmargin=0.15in, label={}]
+        \resumeSubheading
+      {None}{None}
+      {None}{}
+    \end{itemize}
+
+%-----------PROJECTS-----------
+\section{Projects}
+\begin{itemize}[leftmargin=0.15in, label={}]
+        \resumeSubheading
+      {AI Data Analytics Dashboard}{}
+      {Flask, Pandas, NumPy, Scikit-learn, Matplotlib, Seaborn, HTML, CSS, JavaScript}{}
+            \begin{itemize}
+                \resumeItem{Built a Flask web app that lets users upload CSV/Excel files and quickly analyze data.}
+                \resumeItem{Automatically cleaned data by fixing columns, removing errors, and detecting abnormal values.}
+                \resumeItem{Created simple charts like histograms, box plots, bar charts, and heatmaps for easy understanding.}
+                \resumeItem{Added real-time updates using SocketIO to make the dashboard feel live and interactive.}
+                \resumeItem{Built a RandomForest prediction system to help users forecast values and test what-if scenarios.}
+                \resumeItem{Allowed users to download cleaned data and results as CSV/Excel files.}
+              \end{itemize}
+              \resumeSubheading
+      {TravelBuddy: AI-Powered Travel Recommendation \& Trip Planning System}{}
+      {Flask, Pandas, NumPy, Scikit-learn, Matplotlib, Seaborn, HTML, CSS, JavaScript}{}
+            \begin{itemize}
+                \resumeItem{Built a Flask web app that lets users upload CSV/Excel files and instantly analyze their data.}
+                \resumeItem{Cleaned data automatically by fixing column names, handling missing values, and detecting unusual data.}
+                \resumeItem{Created charts like histograms, box plots, bar charts, and heatmaps for easy understanding.}
+                \resumeItem{Added real-time updates using SocketIO so the dashboard feels live and interactive.}
+                \resumeItem{Built a prediction system using RandomForest to help users forecast values and run simple what-if scenarios.}
+                \resumeItem{Added export options so users can download cleaned data or results as CSV/Excel.}
+              \end{itemize}
+          \end{itemize}
+
+%-----------SKILLS-----------
+\section{Technical Skills}
+\begin{itemize}[leftmargin=0.15in, label={}]
+    \item \small{
+     \textbf{Languages \& Tools:}\ Programming: Python; Database: SQL; Machine Learning: Predictive Modeling, Model Training, Model Evaluation; Data Engineering: ETL Pipelines, Data Modeling; Data Visualization: Power BI, Matplotlib; AI/ML Application Development: Flask; Tools \& Practices: Git, GitHub, Jupyter Notebook; Data Products: Real-time Data Systems, Automation-Oriented AI Solutions; Data Products: Data Pipelines for High-Performance Trading
+    }
+\end{itemize}
+
+%-----------CERTIFICATIONS-----------
+\section{Certifications}
+\begin{itemize}[leftmargin=0.15in, label={}]
+        \item \small{{'name': 'Complete Data Science Bootcamp', 'issuer': 'Udemy', 'desc': 'Python, SQL, Excel, Machine Learning, Data Analytics'}}
+        \item \small{{'name': 'DOTNET Full Stack Certification', 'issuer': 'Wipro TalentNext', 'desc': 'C\\#, SQL, Full Stack Development Fundamentals'}}
+    \end{itemize}
+
+\end{document}

@@ -1,0 +1,33 @@
+{% extends 'jobhunter/base.html' %}
+{% block content %}
+
+<h2>Search Jobs in India (Fast & Safe)</h2>
+
+<form method="post" style="background:#f8f9fa; padding:30px; border-radius:15px; margin:30px 0;">
+  {% csrf_token %}
+
+  <div style="margin-bottom:20px;">
+    <input type="text"
+           name="keywords"
+           placeholder="e.g. Python Developer, Data Analyst, React"
+           required
+           style="width:70%; padding:15px; font-size:18px; border-radius:10px; border:2px solid #3498db;">
+
+    <input type="text"
+           name="location"
+           value="India"
+           readonly
+           style="width:25%; padding:15px; font-size:18px; border-radius:10px; background:#ecf0f1;">
+  </div>
+
+  <div style="text-align:center; margin-top:30px;">
+    <button type="submit"
+            style="background:#e74c3c; color:white; font-size:24px; padding:20px 50px; border-radius:15px; border:none; cursor:pointer;">
+      FETCH JOBS (API – FAST)
+    </button>
+  </div>
+</form>
+
+<a href="{% url 'dashboard' %}" class="btn" style="margin-top:30px;">Back to Dashboard</a>
+
+{% endblock %}

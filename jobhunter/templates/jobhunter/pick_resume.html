@@ -1,0 +1,18 @@
+{% extends "jobhunter/base.html" %}
+
+{% block content %}
+<h2>Choose Resume for: {{ job.title }} at {{ job.company }}</h2>
+
+<form method="post">
+    {% csrf_token %}
+    <select name="resume_id" required style="width:100%; padding:10px; font-size:16px;">
+        {% for resume in resumes %}
+        <option value="{{ resume.id }}">
+            {{ resume.name }} — {{ resume.description }}
+        </option>
+        {% endfor %}
+    </select>
+    <br><br>
+    <button type="submit" class="btn">Use This Resume →</button>
+</form>
+{% endblock %}

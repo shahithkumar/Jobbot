@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-app: #0E1015;
+  --bg-surface: #151821;
+  --bg-hover: #1B1F2A;
+  --border-subtle: #232838;
+  --text-primary: #E6E8EB;
+  --text-secondary: #9BA1AE;
+  --text-muted: #6B7280;
+  --accent-primary: #6366F1;
+}
+
+body {
+  background-color: var(--bg-app);
+  color: var(--text-primary);
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+@layer utilities {
+  .linear-card {
+    @apply bg-[#151821] border border-[#232838] rounded-md;
+  }
+
+  .linear-input {
+    @apply bg-transparent border border-[#232838] rounded px-3 py-2 text-sm text-[#E6E8EB] placeholder-[#6B7280] focus:outline-none focus:border-[#6366F1] transition-colors;
+  }
+
+  .linear-button {
+    @apply px-3 py-1.5 rounded text-sm font-medium transition-colors;
+  }
+
+  .linear-button-primary {
+    @apply bg-[#6366F1] hover:bg-[#5558DD] text-white;
+  }
+
+  .linear-button-secondary {
+    @apply bg-[#1B1F2A] hover:bg-[#232838] border border-[#232838] text-[#E6E8EB];
+  }
+}

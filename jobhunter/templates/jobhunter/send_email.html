@@ -1,0 +1,44 @@
+{% extends "jobhunter/base.html" %}
+
+{% block content %}
+<div style="max-width:800px; margin:auto;">
+    <h2>📧 Final Step – Send Your Application</h2>
+    <div class="card">
+        <strong>Job:</strong> {{ app.job.title }}<br>
+        <strong>Company:</strong> {{ app.job.company }}<br>
+        <strong>Resume Used:</strong> {{ app.resume.name }}
+    </div>
+
+    <form method="post" style="margin-top:20px;">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn" style="font-size:18px; padding:15px 30px; background:#27ae60;">
+            🚀 Generate AI Email & Send Now
+        </button>
+    </form>
+
+    {% if app.email_body %}
+        <h3 style="margin-top:40px; color:#27ae60;">✅ AI-Generated Email (Ready to Send)</h3>
+        <div style="
+            background: #1e1e1e; 
+            color: #f8f8f2; 
+            padding: 25px; 
+            border-radius: 12px; 
+            font-family: 'Courier New', monospace;
+            white-space: pre-wrap;
+            border: 1px solid #333;
+        ">
+{{ app.email_body }}
+        </div>
+
+        <div style="margin-top:20px; padding:20px; background:#d4edda; border-radius:10px; color:#155724;">
+            <strong>🎉 This email will be sent with:</strong><br>
+            • Attachment: <strong>{{ app.final_resume_file.name }}</strong><br>
+            • To: <strong>{{ app.hr_email }}</strong> ({{ app.hr_name|default:"No name entered" }})
+        </div>
+    {% endif %}
+
+    <br>
+    <a href="{% url 'dashboard' %}" class="btn">← Dashboard</a>
+</div>
+{% endblock %}
