@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 import { remoteLog } from './utils/logger'
 import { LogIn, Send, Briefcase, FileText, LayoutGrid, List as ListIcon, Plus, Search, ExternalLink, Mic, Zap } from 'lucide-react'
 import ResumeUpload from './ResumeUpload'
@@ -18,6 +19,7 @@ axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'X-CSRFToken';
 
 function Dashboard() {
+    const navigate = useNavigate();
     // Force token to exist so we skip login screen
     const [token, setToken] = useState('auto-login-active');
     const [loading, setLoading] = useState(false);
@@ -146,7 +148,7 @@ function Dashboard() {
                         ].map(tool => (
                             <button
                                 key={tool.path}
-                                onClick={() => window.location.href = tool.path} // Simple nav for now since we are inside BrowserRouter but want to switch route completely
+                                onClick={() => navigate(tool.path)} // Proper React Router navigation
                                 className="w-full h-8 flex items-center space-x-2 px-2 rounded hover:bg-[#151821] text-[#9BA1AE] hover:text-[#E6E8EB] transition-colors text-sm"
                             >
                                 <tool.icon size={14} />
@@ -357,6 +359,7 @@ function Dashboard() {
                                 </div>
                             )}
 
+                            {activeTab === 'analytics' && <AnalyticsDashboard apps={apps} />}
                             {activeTab === 'automation' && <AutomationSettings />}
                         </>
                     )}
