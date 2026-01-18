@@ -305,9 +305,7 @@ function Dashboard() {
 
                             {activeTab === 'apps' && (
                                 <div className="space-y-6">
-                                    <AnalyticsDashboard apps={apps} />
-
-                                    <div className="flex justify-between items-center mt-8 mb-4">
+                                    <div className="flex justify-between items-center mb-4">
                                         <h3 className="text-sm font-medium text-[#E6E8EB]">Pipeline</h3>
                                         <div className="bg-[#151821] border border-[#232838] rounded flex p-0.5">
                                             <button
