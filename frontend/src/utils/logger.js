@@ -3,7 +3,7 @@ import axios from 'axios';
 // Ensure baseURL is set for this utility or reuse the global one if set in App.js
 // Ideally, we should have a centralized API client, but for now we follow the existing pattern.
 
-const BASE_URL = 'http://localhost:8000';
+const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
 
 export const remoteLog = async (msg, context = 'FRONTEND') => {
     // 1. Log to Browser Console

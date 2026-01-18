@@ -12,7 +12,7 @@ import AnalyticsDashboard from './AnalyticsDashboard'
 import AutomationSettings from './AutomationSettings'
 
 // Configure Axios
-axios.defaults.baseURL = 'http://localhost:8000';
+axios.defaults.baseURL = import.meta.env.VITE_API_URL || 'http://localhost:8000';
 axios.defaults.withCredentials = true;
 axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'X-CSRFToken';
